@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+application {
+    mainClassName = 'Hello.HelloWorld'
+}
+
+repositories {
+    mavenCentral()
+}
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    implementation "joda-time:joda-time:2.10.5"
+}
+
+jar {
+    archiveBaseName.set('gs-gradle')
+    archiveVersion.set('0.1.0')
+}
+
+wrapper {
+    gradleVersion('7.1')
+}
