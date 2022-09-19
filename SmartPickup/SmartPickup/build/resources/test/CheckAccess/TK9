@@ -1,0 +1,9 @@
+{
+    "request": {
+        "body": "body"
+    },
+    "response": {
+        "checkEmployee": false,
+        "representative": false
+    }
+}

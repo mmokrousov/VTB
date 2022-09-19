@@ -1,0 +1,17 @@
+{
+  "request": {
+    "channel": "online",
+    "clientPackage": "privilege",
+    "currency": "RUB",
+    "options": [
+      "refill"
+    ],
+    "term": 110
+  },
+
+  "response":[
+    {
+      "message": "Поле amount: не должно быть пустым"
+    }
+  ]
+}

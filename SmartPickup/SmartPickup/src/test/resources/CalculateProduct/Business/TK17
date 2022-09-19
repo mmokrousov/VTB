@@ -1,0 +1,16 @@
+{
+  "request": {
+    "amount": 70000,
+    "channel": "online",
+    "clientPackage": "privilege",
+    "code": "prvo",
+    "currency": "EUR",
+    "options": [
+      "capitalization", "welcome1"
+    ],
+    "term": 300
+  },
+  "response": {
+    "message": "Неверное значение в поле options"
+  }
+}

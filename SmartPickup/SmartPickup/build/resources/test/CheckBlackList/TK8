@@ -1,0 +1,11 @@
+{
+    "request": {
+        "currency": "RUB"
+    },
+    "response": {
+        "blacklist": true,
+        "stageArb": "APPROVAL_HEAD",
+        "commentArb": "arbitration APPROVAL_HEAD",
+        "currency": "RUB"
+    }
+}

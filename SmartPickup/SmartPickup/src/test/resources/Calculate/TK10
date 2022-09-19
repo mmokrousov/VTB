@@ -1,0 +1,11 @@
+{
+    "request": {
+        "cost": 9200000,
+        "currency": "RUB"
+    },
+    "response": {
+        "errorCode": "121",
+        "message": "Не найдены обязательные заголовки: X-User-Session-ID или x-session-id. Обратитесь в СПП.",
+        "traceId": "8810d5b9199f6832"
+    }
+}

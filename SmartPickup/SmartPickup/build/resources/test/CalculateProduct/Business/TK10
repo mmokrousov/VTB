@@ -1,0 +1,21 @@
+{
+  "request": {
+    "amount": 700000,
+    "channel": "online",
+    "clientPackage": "privilege",
+    "code": "prvo",
+    "currency": "RUB",
+    "options": [
+      "capitalization"
+    ],
+    "term": 400
+  },
+  "response": {
+    "code": "prvo",
+    "income": 4756.16,
+    "currency": "RUB",
+    "percent": 8.00,
+    "totalAmount": 704756.16,
+    "yield": 8.00
+  }
+}

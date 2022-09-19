@@ -1,0 +1,20 @@
+{
+    "request": {
+        "cost": 9200000,
+        "currency": "RUB"
+    },
+    "response": {
+        "mass": 2274,
+        "offer": 4045.30,
+        "minSum": 1000,
+        "maxSum": 100000,
+        "account": [{
+                "number": "40817810535100002588",
+                "balance": {
+                    "currency": "RUR",
+                    "amount": 100000
+                }
+            }
+        ]
+    }
+}

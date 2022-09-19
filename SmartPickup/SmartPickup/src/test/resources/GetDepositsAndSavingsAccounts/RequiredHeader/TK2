@@ -1,0 +1,16 @@
+{
+  "request": {
+    "amount": 700000,
+    "channel": "online",
+    "clientPackage": "privilege",
+    "currency": "RUB",
+    "options": [
+      "capitalization", "welcome"
+    ],
+    "term": 110
+  },
+
+  "response": {
+    "message": "Не найдены обязательные заголовки: X-Initiator-Service"
+  }
+}

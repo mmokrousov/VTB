@@ -1,0 +1,10 @@
+{
+    "request": {
+        "body": "body"
+    },
+    "response": {
+        "errorCode": "124",
+        "message": "Ошибка аутентификации токена. Обратитесь в СПП.",
+        "traceId": "f5260f96bade7680"
+    }
+}

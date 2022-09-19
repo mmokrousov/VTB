@@ -1,0 +1,16 @@
+{
+  "request": {
+    "amount": 70000,
+    "channel": "online",
+    "clientPackage": "privilege1",
+    "code": "prvo",
+    "currency": "EUR",
+    "options": [
+      "capitalization", "welcome"
+    ],
+    "term": 300
+  },
+  "response": {
+    "error": "clientPackage: clientPackage must be one of the following: \"basic\", \"privilege\""
+  }
+}

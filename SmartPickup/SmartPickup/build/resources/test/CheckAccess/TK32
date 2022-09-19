@@ -1,0 +1,10 @@
+{
+  "request": {
+    "body": "body"
+  },
+  "response": {
+    "errorCode": "125",
+    "message": "Не найдены обязательные заголовки: x-epa-channel. Обратитесь в СПП.",
+    "traceId": "c94c07e7b0175f90"
+  }
+}

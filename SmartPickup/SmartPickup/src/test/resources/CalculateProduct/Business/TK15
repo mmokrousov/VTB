@@ -1,0 +1,16 @@
+{
+  "request": {
+    "amount": 70000,
+    "channel": "online",
+    "clientPackage": "privilege",
+    "code": "prvo11",
+    "currency": "EUR",
+    "options": [
+      "capitalization", "welcome"
+    ],
+    "term": 300
+  },
+  "response": {
+    "message": "Не удалось произвести расчет по заданным параметрам. Попробуйте изменить параметры запроса."
+  }
+}

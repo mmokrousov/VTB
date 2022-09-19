@@ -1,0 +1,16 @@
+{
+    "request": {
+        "storage": true,
+        "metalNameIso": "XAU",
+        "currencyNameIso": "RUB",
+        "rate": 6211.05,
+        "mass": 1000000,
+        "pureMass": 1000001.95,
+        "purchaseAmount": 1000000.56
+    },
+    "response": {
+        "errorCode": "101",
+        "message": "Поле pureMass: must be less than or equal to 1000000  Обратитесь в СПП.",
+        "traceId": "a215a4d01b4a4cf5"
+    }
+}

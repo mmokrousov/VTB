@@ -1,0 +1,16 @@
+{
+  "request": {
+    "amount": 700000,
+    "channel": "online",
+    "clientPackage": "privilegetest",
+    "currency": "RUB",
+    "options": [
+      "withdrawal"
+    ],
+    "term": 32
+  },
+
+  "response": {
+    "error": "clientPackage: clientPackage must be one of the following: \"basic\", \"privilege\""
+  }
+}

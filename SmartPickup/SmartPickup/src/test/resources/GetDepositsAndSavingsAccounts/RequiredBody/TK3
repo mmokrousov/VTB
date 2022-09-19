@@ -1,0 +1,16 @@
+{
+  "request": {
+    "amount": 700000,
+    "channel": "online",
+    "currency": "RUB",
+    "options": [
+      "capitalization"
+    ],
+    "term": 180
+  },
+  "response":[
+    {
+      "message": "Поле clientPackage: не должно быть пустым"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+    "request": {
+        "currency": "RUB1"
+    },
+    "response": {
+        "errorCode": "101",
+        "message": "Поле currency: size must be between 3 and 3  Обратитесь в СПП.",
+        "traceId": "71a6a057f2573d0b"
+    }
+}

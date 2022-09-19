@@ -1,0 +1,12 @@
+{"request": {
+  "storage": true,
+  "metalNameIso": "XAU",
+  "currencyNameIso": "RUB",
+  "rate": 6211.05,
+  "mass": 1000000,
+  "pureMass": 999.9,
+  "purchaseAmount": 1000000.56
+},
+"response": {
+  "contractNumber": "GLD00000000"
+}}

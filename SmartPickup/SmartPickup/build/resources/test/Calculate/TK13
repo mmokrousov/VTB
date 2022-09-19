@@ -1,0 +1,19 @@
+{
+    "request": {
+        "mass": 1001,
+        "cost": 1200,
+        "currency": "EUR"
+    },
+    "response": {
+        "offer": 34.23,
+        "minSum": 0,
+        "maxSum": 100000,
+        "account": [{
+                "balance": {
+                    "currency": "EUR",
+                    "amount": 105.64
+                }
+            }
+        ]
+    }
+}

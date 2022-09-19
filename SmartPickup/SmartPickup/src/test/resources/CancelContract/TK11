@@ -1,0 +1,10 @@
+{
+  "request": {
+    "contractNumber": "GLD10000444"
+  },
+  "response": {
+    "errorCode": "125",
+    "message": "Не найдены обязательные заголовки: x-epa-channel. Обратитесь в СПП.",
+    "traceId": "b2b784523f77b7e7"
+  }
+}

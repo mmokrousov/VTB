@@ -1,0 +1,10 @@
+{
+    "request": {
+
+    },
+    "response": {
+        "errorCode": "101",
+        "message": "Поле currency: must not be blank  Обратитесь в СПП.",
+        "traceId": "71a6a057f2573d0b"
+    }
+}

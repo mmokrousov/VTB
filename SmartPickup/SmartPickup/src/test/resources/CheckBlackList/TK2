@@ -1,0 +1,10 @@
+{
+    "request": {
+        "currency": "RUB"
+    },
+    "response": {
+        "blacklist": true,
+        "comment": "Отказано без объяснения причины",
+        "currency": "RUB"
+    }
+}

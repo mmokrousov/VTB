@@ -1,0 +1,11 @@
+{
+    "request": {
+        "currency": "RUB"
+    },
+    "response": {
+        "blacklist": true,
+        "stageArb": "FOR_REVISION",
+        "commentArb": "arbitration FOR_REVISION",
+        "currency": "RUB"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "request": {
+        "currency": "RUB"
+    },
+    "response": {
+        "blacklist": true,
+        "stageArb": "COMPLETED",
+        "commentArb": "arbitration completed with DENY decision",
+        "currency": "RUB"
+    }
+}

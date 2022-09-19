@@ -1,0 +1,11 @@
+{
+    "request": {
+        "cost": 9200000,
+        "currency": "RUB"
+    },
+    "response": {
+        "errorCode": "125",
+        "message": "Не найдены обязательные заголовки: x-epa-ip. Обратитесь в СПП.",
+        "traceId": "8810d5b9199f6832"
+    }
+}

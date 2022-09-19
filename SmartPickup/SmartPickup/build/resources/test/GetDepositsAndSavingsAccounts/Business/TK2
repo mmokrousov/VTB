@@ -1,0 +1,43 @@
+{
+  "request": {
+    "amount": 700000,
+    "channel": "online",
+    "clientPackage": "privilege",
+    "currency": "RUB",
+    "options": [
+      "withdrawal"
+    ],
+    "term": 110
+  },
+
+  "response": {
+    "accounts": [
+      {
+        "code": "_SafeBoxId_",
+        "income": 12657.53,
+        "currency": "RUB",
+        "percent": 6.00000,
+        "totalAmount": 712657.53,
+        "yield": 6.00000
+      },
+      {
+        "code": "_MoneyBoxId_",
+        "income": 8438.36,
+        "currency": "RUB",
+        "percent": 4.00000,
+        "totalAmount": 708438.36,
+        "yield": 4.00000
+      }
+    ],
+    "deposits": [
+      {
+        "code": "prvodbo",
+        "income": 6645.21,
+        "currency": "RUB",
+        "percent": 3.15,
+        "totalAmount": 706645.21,
+        "yield": 3.15
+      }
+    ]
+  }
+}

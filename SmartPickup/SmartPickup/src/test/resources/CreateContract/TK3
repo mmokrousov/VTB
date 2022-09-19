@@ -1,0 +1,10 @@
+{"request": {
+  "storage": true,
+  "rate": 6211.05,
+  "mass": 1000000
+},
+  "response": {
+    "errorCode": "101",
+    "message": "Поле pureMass: must not be null",
+    "traceId": "121321312301"
+  }}

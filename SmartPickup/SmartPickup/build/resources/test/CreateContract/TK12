@@ -1,0 +1,16 @@
+{
+    "request": {
+        "storage": true,
+        "metalNameIso": "XAU1",
+        "currencyNameIso": "RUB",
+        "rate": 6211.05,
+        "mass": 1000,
+        "pureMass": 1000.95,
+        "purchaseAmount": 100000.56
+    },
+    "response": {
+        "errorCode": "101",
+        "message": "Поле metalNameIso: size must be between 3 and 3  Обратитесь в СПП.",
+        "traceId": "a215a4d01b4a4cf5"
+    }
+}

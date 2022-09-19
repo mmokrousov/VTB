@@ -1,0 +1,16 @@
+{
+    "request": {
+        "storage": true,
+        "metalNameIso": "XAU",
+        "currencyNameIso": "RUB",
+        "rate": 6211.05,
+        "mass": 1000,
+        "pureMass": 1000.95,
+        "purchaseAmount": 100000.56
+    },
+    "response": {
+        "errorCode": "121",
+        "message": "Не найдены обязательные заголовки: X-User-Session-ID или x-session-id. Обратитесь в СПП.",
+        "traceId": "6a40b8fd63e23129"
+    }
+}

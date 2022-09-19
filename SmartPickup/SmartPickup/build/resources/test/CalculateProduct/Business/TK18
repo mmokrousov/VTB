@@ -1,0 +1,21 @@
+{
+  "request": {
+    "amount": 999999.9,
+    "channel": "online",
+    "clientPackage": "privilege",
+    "code": "_SafeBoxId_",
+    "currency": "RUB",
+    "options": [
+      "capitalization", "welcome"
+    ],
+    "term": 300
+  },
+  "response": {
+    "code": "_SafeBoxId_",
+    "income": 4756.16,
+    "currency": "RUB",
+    "percent": 8.00,
+    "totalAmount": 704756.16,
+    "yield": 8.00
+  }
+}

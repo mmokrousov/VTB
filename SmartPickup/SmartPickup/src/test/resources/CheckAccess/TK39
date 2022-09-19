@@ -1,0 +1,8 @@
+{
+    "request": {
+        "body": "body"
+    },
+    "response": {
+        "checkEmployee": false
+    }
+}

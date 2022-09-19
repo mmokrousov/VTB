@@ -1,0 +1,21 @@
+{
+  "request": {
+    "amount": 70000,
+    "channel": "online",
+    "clientPackage": "privilege",
+    "code": "_SafeBoxId_",
+    "currency": "USD",
+    "options": [
+      "welcome", "capitalization"
+    ],
+    "term": 300
+  },
+  "response": {
+    "code": "_SafeBoxId_",
+    "income": 4756.16,
+    "currency": "USD",
+    "percent": 8.00,
+    "totalAmount": 704756.16,
+    "yield": 8.00
+  }
+}
