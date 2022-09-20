@@ -1,9 +1,0 @@
-{
-    "request": {
-        "currency": "RUB"
-    },
-    "response": {
-        "blacklist": false,
-        "currency": "RUB"
-    }
-}

@@ -1,9 +1,0 @@
-{
-  "request": {
-    "currency": "RUB"
-  },
-  "response": {
-    "errorCode": "123",
-    "message": "Должно быть заполнено одно из полей: mass, cost. Обратитесь в СПП."
-  }
-}
