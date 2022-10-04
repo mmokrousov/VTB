@@ -5,6 +5,7 @@
     "response": {
         "checkEmployee": true,
         "userGuide": "https://intranet.vtb.com/hidden/Rb-PrivateBanking-docs/Informobshchbankprodukt/Pages/%d0%97%d0%be%d0%bb%d0%be%d1%82%d0%be-%d0%b2-%d1%81%d0%bb%d0%b8%d1%82%d0%ba%d0%b0%d1%85.aspx",
-        "check": true
+        "check": true,
+        "representative": false
     }
 }

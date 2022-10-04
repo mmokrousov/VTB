@@ -27,12 +27,12 @@ public class CheckAccessMethods {
     @DataProvider(name = "Success")
     public static Object[][] CheckAccessSuccess() {
         return new Object[][] {
-                {"src/test/resources/CheckAccess/TK1", "PRIVILEGE"},
-                {"src/test/resources/CheckAccess/TK2", "PRIVILEGE2"},
-                {"src/test/resources/CheckAccess/TK3", "PRIME"},
-                {"src/test/resources/CheckAccess/TK4", "PRIME2"},
-                {"src/test/resources/CheckAccess/TK5", "PRIVILEGE_EUR"},
-                {"src/test/resources/CheckAccess/TK6", "PRIVILEGE_USD"}};
+                {"src/test/resources/CheckAccess/TK1", "FirstPRIV" + x_session_id},
+                {"src/test/resources/CheckAccess/TK2", "ThirdPRIV2" + x_session_id},
+                {"src/test/resources/CheckAccess/TK3", "FirstPRIME" + x_session_id},
+                {"src/test/resources/CheckAccess/TK4", "ThirdPRIME2" + x_session_id},
+                {"src/test/resources/CheckAccess/TK5", "FirstPRIVEUR" + x_session_id},
+                {"src/test/resources/CheckAccess/TK6", "FirstPRIVUSD" + x_session_id}};
     }
 
     @Test(dataProvider = "Success")
@@ -56,25 +56,25 @@ public class CheckAccessMethods {
     @DataProvider(name = "ClientNotEligible")
     public static Object[][] CheckAccessClientNotEligible() {
         return new Object[][] {
-                {"src/test/resources/CheckAccess/TK7", "MULTICARTA"},
-                {"src/test/resources/CheckAccess/TK8", "BASIC"},
-                {"src/test/resources/CheckAccess/TK10", "nationalityCountryCodePersonCS"},
-                {"src/test/resources/CheckAccess/TK11", "birthDateTimePersonCS"},
-                {"src/test/resources/CheckAccess/TK12", "birthPlacePersonCS"},
-                {"src/test/resources/CheckAccess/TK13", "lastNamePersonCS"},
-                {"src/test/resources/CheckAccess/TK14", "firstNamePersonCS"},
-                {"src/test/resources/CheckAccess/TK15", "personDocumentIdentityPersonCS"},
-                {"src/test/resources/CheckAccess/TK16", "addressPersonCS"},
-                {"src/test/resources/CheckAccess/TK17", "notAllParamsPersonCS"},
-                {"src/test/resources/CheckAccess/TK18", "NOPACKAGE_ACTIVE_RUB"},
-                {"src/test/resources/CheckAccess/TK19", "NO_ACTIVE_RUB"},
-                {"src/test/resources/CheckAccess/TK20", "PRIVILEGE_NO_MASTER_ACCOUNT"},
-                {"src/test/resources/CheckAccess/TK21", "PRIVILEGE_MASTER_ACCOUNT_closed"},
-                {"src/test/resources/CheckAccess/TK22", "PRIVILEGE_NOT_RUB_EUR_USD"},
-                {"src/test/resources/CheckAccess/TK23", "Role_38PersonCS"},
-                {"src/test/resources/CheckAccess/TK24", "Role_39PersonCS"},
-                {"src/test/resources/CheckAccess/TK25", "NO_18_YEARSPersonCS"},
-                {"src/test/resources/CheckAccess/TK26", "deathDateTimePersonCS"}};
+                {"src/test/resources/CheckAccess/TK7", "FirstMULTCART" + x_session_id},
+                {"src/test/resources/CheckAccess/TK8", "FirstBASIC" + x_session_id},
+                {"src/test/resources/CheckAccess/TK10", "FirstNCCPnCS" + x_session_id},
+                {"src/test/resources/CheckAccess/TK11", "FirstBDtTmPnCS" + x_session_id},
+                {"src/test/resources/CheckAccess/TK12", "FirstBPlcPnCS" + x_session_id},
+                {"src/test/resources/CheckAccess/TK13", "FirstLNPnCS" + x_session_id},
+                {"src/test/resources/CheckAccess/TK14", "FirstFNPnCS" + x_session_id},
+                {"src/test/resources/CheckAccess/TK15", "FirstPDtIdPnCS" + x_session_id},
+                {"src/test/resources/CheckAccess/TK16", "FirstAdrsPnCS" + x_session_id},
+                {"src/test/resources/CheckAccess/TK17", "FirstNAlPmPnCS" + x_session_id},
+                {"src/test/resources/CheckAccess/TK18", "FirstNoPgAcRUB" + x_session_id},
+                {"src/test/resources/CheckAccess/TK19", "FirstNARUB" + x_session_id},
+                {"src/test/resources/CheckAccess/TK20", "FirstPrivNMA" + x_session_id},
+                {"src/test/resources/CheckAccess/TK21", "FirstPvMAC" + x_session_id},
+                {"src/test/resources/CheckAccess/TK22", "FirstPvNREU" + x_session_id},
+                {"src/test/resources/CheckAccess/TK23", "FirstRl38PnCS" + x_session_id},
+                {"src/test/resources/CheckAccess/TK24", "FirstRl39PnCS" + x_session_id},
+                {"src/test/resources/CheckAccess/TK25", "FirstN18YRPnCS" + x_session_id},
+                {"src/test/resources/CheckAccess/TK26", "FirstDTDPnCS" + x_session_id}};
     }
 
     @Test(dataProvider = "ClientNotEligible")

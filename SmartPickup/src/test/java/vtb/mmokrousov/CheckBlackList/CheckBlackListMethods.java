@@ -54,20 +54,35 @@ public class CheckBlackListMethods {
         comparator.compare(testCase, checkBlackListTestCase.getResponse());
     }
 
-    @Test
-    public void CheckBlackListTK9test() {
+    @DataProvider(name = "ValidHeader")
+    public static Object[][] CheckBlackListValidHeader() {
+        return new Object[][] {
+                {"src/test/resources/CheckBlackList/TK9", "x-epa-sub", x_epa_sub, "x-epa-ctxi", x_epa_ctxi, "x-epa-ip" , x_epa_ip, "x-session-id", x_session_id, "x-epa-channel", x_epa_channel},
+                {"src/test/resources/CheckBlackList/TK10", "x-epa-jti", x_epa_jti, "x-epa-ctxi", x_epa_ctxi, "x-epa-ip" , x_epa_ip, "x-session-id", x_session_id, "x-epa-channel", x_epa_channel},
+                {"src/test/resources/CheckBlackList/TK11", "x-epa-jti", x_epa_jti, "x-epa-sub", x_epa_sub, "x-epa-ip" , x_epa_ip, "x-session-id", x_session_id, "x-epa-channel", x_epa_channel},
+                {"src/test/resources/CheckBlackList/TK12", "x-epa-jti", x_epa_jti, "x-epa-sub", x_epa_sub, "x-epa-ctxi" , x_epa_ctxi, "x-session-id", x_session_id, "x-epa-channel", x_epa_channel},
+                {"src/test/resources/CheckBlackList/TK13", "x-epa-jti", x_epa_jti, "x-epa-sub", x_epa_sub, "x-epa-ctxi" , x_epa_ctxi, "x-epa-ip", x_epa_ip, "x-epa-channel", x_epa_channel},
+                {"src/test/resources/CheckBlackList/TK14", "x-epa-jti", x_epa_jti, "x-epa-sub", x_epa_sub, "x-epa-ctxi" , x_epa_ctxi, "x-epa-ip", x_epa_ip, "x-session-id", x_session_id}};
+    }
+
+    @Test(dataProvider = "ValidHeader")
+    public void CheckBlackListTK6(String filePath, String header1, String value1,
+                               String header2, String value2,
+                               String header3, String value3,
+                               String header4, String value4,
+                               String header5, String value5) {
 
         //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK9", clazz);
+        CheckBlackListTestCase checkBlackListTestCase = JsonToObject(filePath, clazz);
 
         //Получение ответа от микросервиса
         String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
                 CheckBlacklist,
-                header_1420_validation("x-epa-sub", x_epa_sub,
-                        "x-epa-ctxi", UUID.randomUUID().toString(),
-                        "x-epa-ip", x_epa_ip,
-                        "x-session-id", UUID.randomUUID().toString(),
-                        "x-epa-channel", x_epa_channel),
+                header_1420_validation(header1, value1,
+                        header2, value2,
+                        header3, value3,
+                        header4, value4,
+                        header5, value5),
                 BAD_REQUEST);
 
         //Десериализация ответа и сообщения из файла
@@ -75,299 +90,38 @@ public class CheckBlackListMethods {
         comparator.compare(testCase, checkBlackListTestCase.getResponse());
     }
 
-    @Test
-    public void CheckBlackListTK9() {
-
-        HashMap<String, String> header = new HashMap<>();
-        header.put("x-epa-sub", x_epa_sub);
-        header.put("x-epa-ctxi", UUID.randomUUID().toString());
-        header.put("x-epa-ip", x_epa_ip);
-        header.put("x-session-id", x_session_id);
-        header.put("x-epa-channel", x_epa_channel);
-
-        //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK9", clazz);
-
-        //Получение ответа от микросервиса
-        String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
-                CheckBlacklist,
-                header,
-                BAD_REQUEST);
-
-        //Десериализация ответа и сообщения из файла
-        CheckBlackListResponse testCase = JsonToObjectResponse(response, clazzLow); //Десериализация ответа
-        comparator.compare(testCase, checkBlackListTestCase.getResponse());
+    @DataProvider(name = "ValidHeader_2")
+    public static Object[][] CheckBlackListValidHeader_2() {
+        return new Object[][] {
+                {"src/test/resources/CheckBlackList/TK15", "x-epa-jti", symbolIs256, "x-epa-sub", x_epa_sub, "x-epa-ctxi", x_epa_ctxi, "x-epa-ip" , x_epa_ip, "x-session-id", x_session_id, "x-epa-channel", x_epa_channel},
+                {"src/test/resources/CheckBlackList/TK16", "x-epa-jti", x_epa_jti, "x-epa-sub", symbolIs256, "x-epa-ctxi", x_epa_ctxi, "x-epa-ip" , x_epa_ip, "x-session-id", x_session_id, "x-epa-channel", x_epa_channel},
+                {"src/test/resources/CheckBlackList/TK17", "x-epa-jti", x_epa_jti, "x-epa-sub", x_epa_sub, "x-epa-ctxi", symbolIs256, "x-epa-ip" , x_epa_ip, "x-session-id", x_session_id, "x-epa-channel", x_epa_channel},
+                {"src/test/resources/CheckBlackList/TK18", "x-epa-jti", x_epa_jti, "x-epa-sub", x_epa_sub, "x-epa-ctxi", x_epa_ctxi, "x-epa-ip" , symbolIs256, "x-session-id", x_session_id, "x-epa-channel", x_epa_channel},
+                {"src/test/resources/CheckBlackList/TK19", "x-epa-jti", x_epa_jti, "x-epa-sub", x_epa_sub, "x-epa-ctxi", x_epa_ctxi, "x-epa-ip" , x_epa_ip, "x-session-id", symbolIs51, "x-epa-channel", x_epa_channel},
+                {"src/test/resources/CheckBlackList/TK19_1", "x-epa-jti", x_epa_jti, "x-epa-sub", x_epa_sub, "x-epa-ctxi", x_epa_ctxi, "x-epa-ip" , x_epa_ip, "X-User-Session-ID", symbolIs51, "x-epa-channel", x_epa_channel},
+                {"src/test/resources/CheckBlackList/TK20", "x-epa-jti", x_epa_jti, "x-epa-sub", x_epa_sub, "x-epa-ctxi", x_epa_ctxi, "x-epa-ip" , x_epa_ip, "x-session-id", x_session_id, "x-epa-channel", symbolIs256}};
     }
 
-    @Test
-    public void CheckBlackListTK10() {
-
-        HashMap<String, String> header = new HashMap<>();
-        header.put("x-epa-jti", UUID.randomUUID().toString());
-        header.put("x-epa-ctxi", UUID.randomUUID().toString());
-        header.put("x-epa-ip", x_epa_ip);
-        header.put("x-session-id", x_session_id);
-        header.put("x-epa-channel", x_epa_channel);
+    @Test(dataProvider = "ValidHeader_2")
+    public void CheckBlackListTK7(String filePath, String header1, String value1,
+                                  String header2, String value2,
+                                  String header3, String value3,
+                                  String header4, String value4,
+                                  String header5, String value5,
+                                  String header6, String value6) {
 
         //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK10", clazz);
+        CheckBlackListTestCase checkBlackListTestCase = JsonToObject(filePath, clazz);
 
         //Получение ответа от микросервиса
         String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
                 CheckBlacklist,
-                header,
-                BAD_REQUEST);
-
-        //Десериализация ответа и сообщения из файла
-        CheckBlackListResponse testCase = JsonToObjectResponse(response, clazzLow); //Десериализация ответа
-        comparator.compare(testCase, checkBlackListTestCase.getResponse());
-    }
-
-    @Test
-    public void CheckBlackListTK11() {
-
-        HashMap<String, String> header = new HashMap<>();
-        header.put("x-epa-jti", UUID.randomUUID().toString());
-        header.put("x-epa-sub", x_epa_sub);
-        header.put("x-epa-ip", x_epa_ip);
-        header.put("x-session-id", x_session_id);
-        header.put("x-epa-channel", x_epa_channel);
-
-        //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK11", clazz);
-
-        //Получение ответа от микросервиса
-        String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
-                CheckBlacklist,
-                header,
-                BAD_REQUEST);
-
-        //Десериализация ответа и сообщения из файла
-        CheckBlackListResponse testCase = JsonToObjectResponse(response, clazzLow); //Десериализация ответа
-        comparator.compare(testCase, checkBlackListTestCase.getResponse());
-    }
-
-    @Test
-    public void CheckBlackListTK12() {
-
-        HashMap<String, String> header = new HashMap<>();
-        header.put("x-epa-jti", UUID.randomUUID().toString());
-        header.put("x-epa-sub", x_epa_sub);
-        header.put("x-epa-ctxi", UUID.randomUUID().toString());
-        header.put("x-session-id", x_session_id);
-        header.put("x-epa-channel", x_epa_channel);
-
-        //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK12", clazz);
-
-        //Получение ответа от микросервиса
-        String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
-                CheckBlacklist,
-                header,
-                BAD_REQUEST);
-
-        //Десериализация ответа и сообщения из файла
-        CheckBlackListResponse testCase = JsonToObjectResponse(response, clazzLow); //Десериализация ответа
-        comparator.compare(testCase, checkBlackListTestCase.getResponse());
-    }
-
-    @Test
-    public void CheckBlackListTK13() {
-
-        HashMap<String, String> header = new HashMap<>();
-        header.put("x-epa-jti", UUID.randomUUID().toString());
-        header.put("x-epa-sub", x_epa_sub);
-        header.put("x-epa-ctxi", UUID.randomUUID().toString());
-        header.put("x-epa-ip", x_epa_ip);
-        header.put("x-epa-channel", x_epa_channel);
-
-        //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK13", clazz);
-
-        //Получение ответа от микросервиса
-        String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
-                CheckBlacklist,
-                header,
-                BAD_REQUEST);
-
-        //Десериализация ответа и сообщения из файла
-        CheckBlackListResponse testCase = JsonToObjectResponse(response, clazzLow); //Десериализация ответа
-        comparator.compare(testCase, checkBlackListTestCase.getResponse());
-    }
-
-    @Test
-    public void CheckBlackListTK14() {
-
-        HashMap<String, String> header = new HashMap<>();
-        header.put("x-epa-jti", UUID.randomUUID().toString());
-        header.put("x-epa-sub", x_epa_sub);
-        header.put("x-epa-ctxi", UUID.randomUUID().toString());
-        header.put("x-epa-ip", x_epa_ip);
-        header.put("x-session-id", x_session_id);
-
-        //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK14", clazz);
-
-        //Получение ответа от микросервиса
-        String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
-                CheckBlacklist,
-                header,
-                BAD_REQUEST);
-
-        //Десериализация ответа и сообщения из файла
-        CheckBlackListResponse testCase = JsonToObjectResponse(response, clazzLow); //Десериализация ответа
-        comparator.compare(testCase, checkBlackListTestCase.getResponse());
-    }
-
-    @Test
-    public void CheckBlackListTK15() {
-
-        HashMap<String, String> header = new HashMap<>();
-        header.put("x-epa-jti", symbolIs256);
-        header.put("x-epa-sub", x_epa_sub);
-        header.put("x-epa-ctxi", UUID.randomUUID().toString());
-        header.put("x-epa-ip", x_epa_ip);
-        header.put("x-session-id", x_session_id);
-        header.put("x-epa-channel", x_epa_channel);
-
-
-        //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK15", clazz);
-
-        //Получение ответа от микросервиса
-        String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
-                CheckBlacklist,
-                header,
-                BAD_REQUEST);
-
-        //Десериализация ответа и сообщения из файла
-        CheckBlackListResponse testCase = JsonToObjectResponse(response, clazzLow); //Десериализация ответа
-        comparator.compare(testCase, checkBlackListTestCase.getResponse());
-    }
-
-    @Test
-    public void CheckBlackListTK16() {
-
-        HashMap<String, String> header = new HashMap<>();
-        header.put("x-epa-jti", x_epa_jti);
-        header.put("x-epa-sub", symbolIs256);
-        header.put("x-epa-ctxi", UUID.randomUUID().toString());
-        header.put("x-epa-ip", x_epa_ip);
-        header.put("x-session-id", x_session_id);
-        header.put("x-epa-channel", x_epa_channel);
-
-
-        //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK16", clazz);
-
-        //Получение ответа от микросервиса
-        String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
-                CheckBlacklist,
-                header,
-                BAD_REQUEST);
-
-        //Десериализация ответа и сообщения из файла
-        CheckBlackListResponse testCase = JsonToObjectResponse(response, clazzLow); //Десериализация ответа
-        comparator.compare(testCase, checkBlackListTestCase.getResponse());
-    }
-
-    @Test
-    public void CheckBlackListTK17() {
-
-        HashMap<String, String> header = new HashMap<>();
-        header.put("x-epa-jti", x_epa_jti);
-        header.put("x-epa-sub", x_epa_sub);
-        header.put("x-epa-ctxi", symbolIs256);
-        header.put("x-epa-ip", x_epa_ip);
-        header.put("x-session-id", x_session_id);
-        header.put("x-epa-channel", x_epa_channel);
-
-
-        //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK17", clazz);
-
-        //Получение ответа от микросервиса
-        String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
-                CheckBlacklist,
-                header,
-                BAD_REQUEST);
-
-        //Десериализация ответа и сообщения из файла
-        CheckBlackListResponse testCase = JsonToObjectResponse(response, clazzLow); //Десериализация ответа
-        comparator.compare(testCase, checkBlackListTestCase.getResponse());
-    }
-
-    @Test
-    public void CheckBlackListTK18() {
-
-        HashMap<String, String> header = new HashMap<>();
-        header.put("x-epa-jti", x_epa_jti);
-        header.put("x-epa-sub", x_epa_sub);
-        header.put("x-epa-ctxi", x_epa_ctxi);
-        header.put("x-epa-ip", symbolIs256);
-        header.put("x-session-id", x_session_id);
-        header.put("x-epa-channel", x_epa_channel);
-
-
-        //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK18", clazz);
-
-        //Получение ответа от микросервиса
-        String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
-                CheckBlacklist,
-                header,
-                BAD_REQUEST);
-
-        //Десериализация ответа и сообщения из файла
-        CheckBlackListResponse testCase = JsonToObjectResponse(response, clazzLow); //Десериализация ответа
-        comparator.compare(testCase, checkBlackListTestCase.getResponse());
-    }
-
-    @Test
-    public void CheckBlackListTK19() {
-
-        HashMap<String, String> header = new HashMap<>();
-        header.put("x-epa-jti", x_epa_jti);
-        header.put("x-epa-sub", x_epa_sub);
-        header.put("x-epa-ctxi", x_epa_ctxi);
-        header.put("x-epa-ip", x_epa_ip);
-        header.put("x-session-id", symbolIs51);
-        header.put("x-epa-channel", x_epa_channel);
-
-
-        //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK19", clazz);
-
-        //Получение ответа от микросервиса
-        String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
-                CheckBlacklist,
-                header,
-                BAD_REQUEST);
-
-        //Десериализация ответа и сообщения из файла
-        CheckBlackListResponse testCase = JsonToObjectResponse(response, clazzLow); //Десериализация ответа
-        comparator.compare(testCase, checkBlackListTestCase.getResponse());
-    }
-
-    @Test
-    public void CheckBlackListTK20() {
-
-        HashMap<String, String> header = new HashMap<>();
-        header.put("x-epa-jti", x_epa_jti);
-        header.put("x-epa-sub", x_epa_sub);
-        header.put("x-epa-ctxi", x_epa_ctxi);
-        header.put("x-epa-ip", x_epa_ip);
-        header.put("x-session-id", x_session_id);
-        header.put("x-epa-channel", symbolIs256);
-
-
-        //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK20", clazz);
-
-        //Получение ответа от микросервиса
-        String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
-                CheckBlacklist,
-                header,
+                header_1420_validation_value(header1, value1,
+                        header2, value2,
+                        header3, value3,
+                        header4, value4,
+                        header5, value5,
+                        header6, value6),
                 BAD_REQUEST);
 
         //Десериализация ответа и сообщения из файла
@@ -472,84 +226,26 @@ public class CheckBlackListMethods {
         comparator.compare(testCase, checkBlackListTestCase.getResponse());
     }
 
-    @Test
-    public void CheckBlackListTK26() {
-
-        //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK26", clazz);
-
-        //Получение ответа от микросервиса
-        String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
-                CheckBlacklist,
-                header_1420("FirstBRqtSn" + x_session_id),
-                UNATHORIZED);
-
-        //Десериализация ответа и сообщения из файла
-        CheckBlackListResponse testCase = JsonToObjectResponse(response, clazzLow); //Десериализация ответа
-        comparator.compare(testCase, checkBlackListTestCase.getResponse());
+    @DataProvider(name = "SystemsUnavailableSession")
+    public static Object[][] CheckBlackListSystemsUnavailableSession() {
+        return new Object[][] {
+                {"src/test/resources/CheckBlackList/TK26", "FirstBRqtSn" + x_session_id},
+                {"src/test/resources/CheckBlackList/TK27", "FirstUndSn" + x_session_id},
+                {"src/test/resources/CheckBlackList/TK28", "FirstFbdSn" + x_session_id},
+                {"src/test/resources/CheckBlackList/TK29", "FirstNFdSn" + x_session_id},
+                {"src/test/resources/CheckBlackList/TK30", "FirstISESn" + x_session_id}};
     }
 
-    @Test
-    public void CheckBlackListTK27() {
+    @Test(dataProvider = "SystemsUnavailableSession")
+    public void CheckBlackListTK26(String filePath, String session) {
 
         //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK27", clazz);
+        CheckBlackListTestCase checkBlackListTestCase = JsonToObject(filePath, clazz);
 
         //Получение ответа от микросервиса
         String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
                 CheckBlacklist,
-                header_1420("FirstUndSn" + x_session_id),
-                UNATHORIZED);
-
-        //Десериализация ответа и сообщения из файла
-        CheckBlackListResponse testCase = JsonToObjectResponse(response, clazzLow); //Десериализация ответа
-        comparator.compare(testCase, checkBlackListTestCase.getResponse());
-    }
-
-    @Test
-    public void CheckBlackListTK28() {
-
-        //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK28", clazz);
-
-        //Получение ответа от микросервиса
-        String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
-                CheckBlacklist,
-                header_1420("FirstFbdSn" + x_session_id),
-                UNATHORIZED);
-
-        //Десериализация ответа и сообщения из файла
-        CheckBlackListResponse testCase = JsonToObjectResponse(response, clazzLow); //Десериализация ответа
-        comparator.compare(testCase, checkBlackListTestCase.getResponse());
-    }
-
-    @Test
-    public void CheckBlackListTK29() {
-
-        //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK29", clazz);
-
-        //Получение ответа от микросервиса
-        String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
-                CheckBlacklist,
-                header_1420("FirstNFdSn" + x_session_id),
-                UNATHORIZED);
-
-        //Десериализация ответа и сообщения из файла
-        CheckBlackListResponse testCase = JsonToObjectResponse(response, clazzLow); //Десериализация ответа
-        comparator.compare(testCase, checkBlackListTestCase.getResponse());
-    }
-
-    @Test
-    public void CheckBlackListTK30() {
-
-        //Десериализация запроса
-        CheckBlackListTestCase checkBlackListTestCase = JsonToObject("src/test/resources/CheckBlackList/TK30", clazz);
-
-        //Получение ответа от микросервиса
-        String response = requestAPI(ObjectToJsonString(checkBlackListTestCase.getRequest()),
-                CheckBlacklist,
-                header_1420("FirstISESn" + x_session_id),
+                header_1420(session),
                 UNATHORIZED);
 
         //Десериализация ответа и сообщения из файла

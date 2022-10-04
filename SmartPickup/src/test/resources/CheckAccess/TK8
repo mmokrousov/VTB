@@ -6,6 +6,7 @@
         "checkEmployee": true,
         "userGuide": "https://bwiki.region.vtb.ru/kms/CM/INTERNAL/LAYOUT?item_id=15656&homePage=%2FCM%2FT_PRODUCKT%2FVIEW%3Fitem_id%3D9811303%26search_index%3D1&homePageEncoded=true",
         "check": false,
+        "representative": false,
         "reasonError": [{
                 "details": "clientPS"
             }
