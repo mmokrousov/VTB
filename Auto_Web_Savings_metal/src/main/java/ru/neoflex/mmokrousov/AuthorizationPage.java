@@ -34,18 +34,6 @@ public class AuthorizationPage {
     private WebElement inputButton;
 
 
-    /*
-    public AuthorizationPage inputAdditionallyButton(){
-        driver.findElement(additionallyButton).click();
-        return this;
-    }
-
-    public AuthorizationPage inputToWebSite(){
-        driver.findElement(inputToWebSite).click();
-        return this;
-    }*/
-
-
     public void inputSessionId(String session){sessionId.sendKeys(session);}
 
     public void inputWireMock(){wireMock.sendKeys("https://wiremock-savc.ds1-genr01-savc-savings-st.apps.ds1-genr01.corp.dev.vtb/bsc-wire-mock/");}
@@ -65,6 +53,18 @@ public class AuthorizationPage {
 
     public FirstWindowObject inputButton(){
         inputButton.click();
+        return new FirstWindowObject(driver);
+    }
+
+    public FirstWindowObject inputFirstWindow(String session){
+        inputSessionId(session);
+        inputWireMock();
+        inputSub();
+        inputCtxi();
+        inputChannel();
+        inputJti();
+        inputIp();
+        inputButton();
         return new FirstWindowObject(driver);
     }
 

@@ -1,5 +1,6 @@
 package ru.neoflex.mmokrousov;
 
+import com.beust.ah.A;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FirstWindowObject {
     WebDriver driver;
@@ -31,6 +34,10 @@ public class FirstWindowObject {
     WebElement textDeny;
     @FindBy(xpath = "//*[@id=\"root\"]/div[2]/div/div[2]/div/div/span[2]")//Сообщение отказа текст
     WebElement textDenyMessage;
+    @FindBy(xpath = "//*[@id=\"root\"]/div[2]/div")//Цвет рамки
+    WebElement colorMessage;
+    @FindBy(xpath = "//*[@id=\"root\"]/div[2]/div")//Цвет значка
+    WebElement colorIcon;
     @FindBy(xpath = "//*[@id=\"root\"]/form/div[1]/div[1]/label")//Валюта текст
     WebElement textCurrency;
     @FindBy(xpath = "//*[@id=\"root\"]/form/div[1]/div[1]/div/div[1]/div/div[1]")//Выплывающий список RUB поле
@@ -57,6 +64,8 @@ public class FirstWindowObject {
     WebElement textCourseGold;
     @FindBy(xpath = "//*[@id=\"root\"]/form/div[1]/div[3]/div/div/div[1]/input")//Предварительный курс золота поле
     WebElement fieldCourseGold;
+    @FindBy(xpath = "//*[@id=\"root\"]/form/div[1]/div[3]/div/div/div[2]/div")//Курс актуален для массы
+    WebElement textActualCourseForMass;
     @FindBy(xpath = "//*[@id=\"root\"]/form/div[1]/div[4]/div[1]/label")//Масса слитков текст
     WebElement textMass;
     @FindBy(xpath = "//*[@id=\"root\"]/form/div[1]/div[4]/div[1]/div/div[1]/input")//Масса слитков поле
@@ -86,6 +95,7 @@ public class FirstWindowObject {
 
 
 
+
     public String getTextSaleBullion(){return textSaleBullion.getText();}
 
     public String getTextUser(){return textUser.getText();}
@@ -104,10 +114,10 @@ public class FirstWindowObject {
 
     public void clickButtonCurrencyRUB(){buttonCurrencyRUB.click();}
 
-    public String getFieldElementCurrencyUSD(){
+    public String getFieldElementCurrencyUSD(WebElement currency){
         try {
             Thread.sleep(1000);
-            return fieldCurrencyUSD.getText();
+            return currency.getText();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -139,6 +149,8 @@ public class FirstWindowObject {
     public String getTextCourseGold(){return textCourseGold.getText();}
 
     public String getFieldCourseGold(){return fieldCourseGold.getAttribute("value");}
+
+    public String getActualCourseForMass(){return textActualCourseForMass.getText();}
 
     public String getTextMass(){return textMass.getText();}
 
@@ -173,27 +185,55 @@ public class FirstWindowObject {
         Assert.assertEquals("Предварительный расчет", getTextPreCalculate());
     }
 
+    public void headerBlockCheck(String currency){
+        Assert.assertEquals("Предоставления продукта в данной валюте запрещено", getTextDeny());
+        Assert.assertEquals(currency + ": Отказано без объяснения причины", getTextDenyMessage());
+        Assert.assertEquals("rgb(218, 11, 32)", colorMessage.getCssValue("border-color"));
+    }
+
+    public void headerBlockCheckArbDeny(String currency){
+        Assert.assertEquals("Предоставления продукта в данной валюте запрещено", getTextDeny());
+        Assert.assertEquals(currency + ": arbitration completed with DENY decision", getTextDenyMessage());
+        Assert.assertEquals("rgb(218, 11, 32)", colorMessage.getCssValue("border-color"));
+    }
+
+    public void headerBlockCheckArbInWork(String currency){
+        Assert.assertEquals("Арбитраж по клиенту в данной валюте находится на рассмотрении", getTextDeny());
+        Assert.assertEquals(currency + ": arbitration IN_WORK", getTextDenyMessage());
+        //Assert.assertEquals("rgb(255, 140, 25)", colorIcon.getCssValue("fill"));
+        Assert.assertEquals("rgb(255, 140, 25)", colorMessage.getCssValue("border-color"));
+    }
+
     public void accountBlock(){
         Assert.assertEquals("Счет списания", getFieldDebitAccount());
         Assert.assertEquals("Текущий счет • 7949", getFieldMasterAccount());
         Assert.assertEquals("7 997 695,52 RUR", getFieldMasterAccountSumm());
     }
 
+    public void accountBlockNoMoney(){
+        Assert.assertEquals("Счет списания", getFieldDebitAccount());
+        Assert.assertEquals("Текущий счет • 7949", getFieldMasterAccount());
+        Assert.assertEquals("7 997 695,52 RUR", getFieldMasterAccountSumm());
+        Assert.assertEquals("rgba(218, 11, 32, 1)", textLowMoney.getCssValue("color"));
+    }
+
+
     public void preCourseGoldRUB(){
         Assert.assertEquals("Предварительный курс золота", getTextCourseGold());
         Assert.assertEquals("4 045,30 ₽ за 1 г", getFieldCourseGold());
+        Assert.assertEquals("Курс актуален для массы от 884 г до 100 885 г", getActualCourseForMass());
     }
 
     public void preCourseGoldUSD(){
         Assert.assertEquals("0,00 $", getFieldSumm("placeholder"));
         Assert.assertEquals("45,67 $ за 1 г", getFieldCourseGold());
-        Assert.assertEquals("до 10 000 г", getTextBefore());
+        //Assert.assertEquals("до 10 000 г", getTextBefore());
     }
 
     public void preCourseGoldEUR(){
         Assert.assertEquals("0,00 €", getFieldSumm("placeholder"));
         Assert.assertEquals("34,23 € за 1 г", getFieldCourseGold());
-        Assert.assertEquals("до 10 000 г", getTextBefore());
+        //Assert.assertEquals("до 10 000 г", getTextBefore());
     }
 
     public void currency(String currency, String currencyElement){
@@ -204,7 +244,7 @@ public class FirstWindowObject {
     public void massBullion(){
         Assert.assertEquals("Масса слитков", getTextMass());
         Assert.assertEquals("0 г", getFieldMass("placeholder"));
-        Assert.assertEquals("до 100 824 г", getTextBefore());
+        //Assert.assertEquals("до 100 824 г", getTextBefore());
     }
 
     public void onSummaRUB(){
@@ -212,11 +252,21 @@ public class FirstWindowObject {
         Assert.assertEquals("0,00 ₽", getFieldSumm("placeholder"));
     }
 
+    public void onSummaUSD(){
+        Assert.assertEquals("На сумму", getTextSumm());
+        Assert.assertEquals("0,00 $", getFieldSumm("placeholder"));
+    }
+
+    public void onSummaEUR(){
+        Assert.assertEquals("На сумму", getTextSumm());
+        Assert.assertEquals("0,00 €", getFieldSumm("placeholder"));
+    }
+
     public void selectCurrency(String currency, WebElement clickButtonCurrencyNow, WebElement clickButtonCurrencyNeed){
         try {
             clickButtonCurrencyNow.click();
             Thread.sleep(2000);
-            Assert.assertEquals(currency, getFieldElementCurrencyUSD());
+            Assert.assertEquals(currency, clickButtonCurrencyNeed.getText());
             clickButtonCurrencyNeed.click();
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -224,5 +274,31 @@ public class FirstWindowObject {
         }
     }
 
+    public void setMassBullion(String mass){
+        try {
+            setFieldMass(mass);
+            clickFieldSumm();
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+    }
+
+    public void requiredField(){
+        Assert.assertEquals("На сумму", getTextSumm());
+        Assert.assertEquals("0,00 ₽", getFieldSumm("placeholder"));
+        Assert.assertEquals("Масса слитков", getTextMass());
+        Assert.assertEquals("0 г", getFieldMass("placeholder"));
+        Assert.assertEquals("Обязательно для заполнения", getTextRequiredMass());
+        Assert.assertEquals("Обязательно для заполнения", getTextRequiredSumm());
+    }
+
+    public List cache(){
+        List <String> cache = new ArrayList<>();
+        cache.add(getFieldMasterAccountSumm());
+        cache.add(getFieldMass("value"));
+        cache.add(getFieldSumm("value"));
+        return  cache;
+    }
 }
